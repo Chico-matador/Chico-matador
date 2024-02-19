@@ -1,0 +1,23 @@
+<pegar> pegue a <roupa nova>
+    <pegar> pegue a toalha
+    <ande> va ate o banheiro
+        <abre> Porta do banheiro
+            <aperte> ligue a luz
+           
+  <feche>  Porta do banheiro
+    <tirar> camisa
+        <tirar> calça
+<tirar>cueca
+    <pegar> sabao,shampoo e esponja
+    <abre> porta do box
+        <feche> porta do box
+       <abre> registro
+        <espere>agua cair no corpo
+            <passe> sabao no corpo     
+<passe> esponja no corpo
+ <passe> agua no corpo
+     <pegar> toalha e passe no corpo
+        <coloque> <roupa nova>
+            <abre> Porta do banheiro
+                <aperte> apague a luz       
+                    <feche>  Porta do banheiro
