@@ -1,0 +1,6 @@
+<div class="jogo">
+    <img src="caminho/para/sua/imagem.jpg" alt="Descrição da Imagem">
+    <h3>Jogo 1</h3>
+    <p>Descrição do Jogo 1.</p>
+    <button>Jogar</button>
+</div>
