@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    width: 20px; /* Largura das linhas laterais */
+    height: 100%;
+    background-color: green; /* Cor das linhas laterais */
+}
+
+body::before {
+    left: 0;
+}
+
+body::after {
+    right: 0;
+}
