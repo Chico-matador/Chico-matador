@@ -1,52 +1,33 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
+<meta charset="UTF-8">
 
-header {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
+<meta http-equiv="Compatível com X-UA"
 
-nav {
-    background-color: #444;
-    padding: 10px 0;
-    text-align: center;
-}
+content="IE=borda">
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
+<meta name="janela de visualização"
 
-nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
+content="largura=largura do dispositivo, escala inicial=1.
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
+8">
 
-main {
-    padding: 20px;
-}
+<link rel="stylesheet" href="css/estilo.css">
 
-.game {
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
+<title>sombra da caixa</title>
 
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-}
+</head>
+
+<corpo>
+
+<div class="contêiner">
+
+<div class="caixa">
+
+<h1>web online desenvolve</h1>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
