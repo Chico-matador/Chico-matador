@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de Jogos com Imagem de Fundo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('caminho/para/sua/imagem.jpg');
+            background-size: cover; /* Para cobrir todo o tamanho da tela */
+            background-position: center; /* Para centralizar a imagem */
+            background-repeat: no-repeat; /* Para evitar repetição da imagem */
+        }
+
+        /* Estilos adicionais para o conteúdo do site */
+        header {
+            background-color: rgba(0, 0, 0, 0.5); /* Fundo do cabeçalho com transparência */
+            color: #fff; /* Cor do texto no cabeçalho */
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Outros estilos para o restante do conteúdo */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Meu Site de Jogos</h1>
+    </header>
+
+    <!-- Adicione o restante do conteúdo do site aqui -->
+
+</body>
+</html>
