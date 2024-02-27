@@ -1,0 +1,31 @@
+// Define os pinos dos LEDs RGB
+const int redPin = 9;
+const int greenPin = 10;
+const int bluePin = 11;
+
+void setup() {
+  // Configura os pinos dos LEDs como saída
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+}
+
+void loop() {
+  // Vermelho
+  digitalWrite(redPin, HIGH);
+  digitalWrite(greenPin, LOW);
+  digitalWrite(bluePin, LOW);
+  delay(1000); // Aguarda 1 segundo
+
+  // Verde
+  digitalWrite(redPin, LOW);
+  digitalWrite(greenPin, HIGH);
+  digitalWrite(bluePin, LOW);
+  delay(1000); // Aguarda 1 segundo
+
+  // Azul
+  digitalWrite(redPin, LOW);
+  digitalWrite(greenPin, LOW);
+  digitalWrite(bluePin, HIGH);
+  delay(1000); // Aguarda 1 segundo
+}
