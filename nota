@@ -1,80 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notas</title>
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th, td {
-      border: 1px solid black;
-      padding: 8px;
-      text-align: center;
-    }
-    .nota1 {
-      width: 40%;
-    }
-    .nota2 {
-      width: 60%;
-    }
-  </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var nota1 = document.querySelector('.nota1').textContent;
-      var nota2 = document.querySelector('.nota2').textContent;
-      var soma = parseFloat(nota1) + parseFloat(nota2);
-      alert('Soma das notas: ' + soma);
-    });
-  </script>
-</head>
-<body>
-  <table>
-    <tr>
-      <th class="nota1">Nota 1</th>
-      <th class="nota2">Nota 2</th>
-    </tr>
-    <tr>
-      <td class="nota1">1em</td>
-      <td class="nota2">2em</td>
-    </tr>
-  </table>
-</body>
-</html>>
+programa {
+  funcao inicio() {
+  real Media,Nota1,Nota2
+  escreva("digite nota 1")
+  leia(Nota1)  
+   escreva("digite Nota 2")
+   leia(Nota2)
+   Media=(Nota1*0.4)+(Nota2*0.6)
+   escreva("sua media e: ",Media)
+
+  }
+}
 
 
 
 
 
 
-!DOCTYPE html>
-<html>
- <head>
-   <title>Curso JavaScript Progressivo</title>
-   Primeira nota <input id="nota1" type="number"> <br />
-   Segunda  nota <input id="nota2" type="number"> <br />
-   <button onclick="media()">Calcular M�dia</button>
 
-   <script type="text/javascript">
 
-    function media(){
-     var nota1 = parseFloat(document.getElementById("nota1").value);
-     var nota2 = parseFloat(document.getElementById("nota2").value);
 
-     var media = (nota1 + nota2)/2 ;
 
-     if(media >= 7)
-      if(media==10)
-       alert("Uau! Aprovado com distin��o");
-      else
-       alert("Parabens, aprovado! Media "+media);
-     else
-      alert("Reprovado!")
-
-    }
- </script>
-
- </head>
-</html>
