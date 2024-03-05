@@ -1,0 +1,24 @@
+// C++ code
+//
+const int LED=10;
+const int BOTAO=7;
+int comparacao;
+
+void setup()
+{
+  pinMode(LED, OUTPUT);
+  pinMode(BOTAO,INPUT);
+}
+
+void loop()
+{
+  comparacao=digitalRead(BOTAO);
+  if(comparacao==HIGH)
+  {
+  digitalWrite(LED, HIGH);
+  delay(1000); // Wait for 1000 millisecond(s)
+  }
+  else
+    digitalWrite(LED, LOW);
+  delay(1000); // Wait for 1000 millisecond(s)
+}
