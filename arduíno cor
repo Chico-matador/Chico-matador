@@ -29,3 +29,31 @@ void loop() {
   digitalWrite(bluePin, HIGH);
   delay(1000); // Aguarda 1 segundo
 }
+
+
+
+
+
+
+
+
+```cpp
+const int botaoPin = 7;   // Pino ao qual o botão está conectado
+const int luzPin = 10;    // Pino ao qual o LED está conectado
+
+void setup() {
+  pinMode(botaoPin, INPUT);
+  pinMode(luzPin, OUTPUT);
+}
+
+void loop() {
+  int estadoBotao = digitalRead(botaoPin);
+
+  if (estadoBotao == HIGH) {
+    digitalWrite(luzPin, HIGH);  // Liga o LED quando o botão é pressionado
+  } else {
+    digitalWrite(luzPin, LOW);   // Desliga o LED quando o botão é liberado
+  }
+}
+```
+
