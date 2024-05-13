@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main(void) {
+    float saldoMedio, valorCredito;
+
+    // Entrada do saldo médio do cliente
+    printf("Digite o saldo médio do cliente: ");
+    scanf("%f", &saldoMedio);
+
+    // Verifica o saldo médio e calcula o valor do crédito de acordo com a tabela
+    if (saldoMedio >= 0 && saldoMedio <= 500) {
+        valorCredito = 0; // Nenhum crédito
+    } else if (saldoMedio > 500 && saldoMedio <= 1000) {
+        valorCredito = saldoMedio * 0.3; // 30% do saldo médio
+    } else if (saldoMedio > 1000 && saldoMedio <= 3000) {
+        valorCredito = saldoMedio * 0.4; // 40% do saldo médio
+    } else if (saldoMedio > 3000) {
+        valorCredito = saldoMedio * 0.5; // 50% do saldo médio
+    }
+
+    // Exibe o saldo médio e o valor do crédito
+    printf("Saldo médio do cliente: %.2f\n", saldoMedio);
+    printf("Valor do crédito: %.2f\n", valorCredito);
+
+    return 0;
+}
