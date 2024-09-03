@@ -1,0 +1,21 @@
+
+media_ponderada = (venda_jan * peso_jan + venda_fev * peso_fev + venda_mar * peso_mar + venda_abr * peso_abr) / soma_pesos
+
+
+print(f"\nVendas de Janeiro: {venda_jan}")
+print(f"Vendas de Fevereiro: {venda_fev}")
+print(f"Vendas de Março: {venda_mar}")
+print(f"Vendas de Abril: {venda_abr}")
+print(f"Média ponderada das vendas: {media_ponderada:.2f}")
+
+
+if venda_jan > media_ponderada:
+    print("Vendas de Janeiro superiores à média do período")
+if venda_fev > media_ponderada:
+    print("Vendas de Fevereiro superiores à média do período")
+if venda_mar > media_ponderada:
+    print("Vendas de Março superiores à média do período")
+if venda_abr > media_ponderada:
+    print("Vendas de Abril superiores à média do período")
+```
+
