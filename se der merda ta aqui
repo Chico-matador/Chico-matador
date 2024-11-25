@@ -1,0 +1,213 @@
+from collections import deque
+
+# Definição das classes de contas bancárias
+class ContaBancaria:
+    def __init__(self, numero, titular, saldo=0):
+        self.numero = numero
+        self.titular = titular
+        self.saldo = saldo  
+        self.historico = deque()
+
+    def depositar(self, valor):
+        if valor > 0:
+            self.saldo += valor
+            self.historico.append(f'Depósito: R${valor}')
+            print(f'Depósito de R${valor} realizado. Saldo atual: R${self.saldo}.')
+        else:
+            print("Valor inválido!")
+
+    def sacar(self, valor):
+        if valor > 0:
+            if valor <= self.saldo:
+                self.saldo -= valor
+                self.historico.append(f'Saque: R${valor}')
+                print(f'Saque de R${valor} realizado. Saldo atual: R${self.saldo}.')
+            else:
+                print('Saldo insuficiente.')
+        else:
+            print("Valor inválido!")
+
+    def exibir_historico(self):
+        print(f'Histórico da Conta {self.numero} de {self.titular}:')
+        for item in self.historico:
+            print(item)
+        print(f'Saldo atual: R${self.saldo}')
+
+class ContaNormal(ContaBancaria):
+    pass
+
+class ContaPremium(ContaBancaria):
+    def __init__(self, numero, titular, saldo=0, limite=1000):
+        super().__init__(numero, titular, saldo)
+        self.limite = limite
+
+    def sacar(self, valor):
+        if valor > 0:
+            if valor <= self.saldo + self.limite:
+                self.saldo -= valor
+                self.historico.append(f'Saque (Conta Premium): R${valor}')
+                print(f'Saque de R${valor} realizado. Saldo atual: R${self.saldo}.')
+            else:
+                print('Limite de crédito e saldo insuficientes.')
+        else:
+            print("Valor inválido!")
+
+# Definição da classe de clientes
+class Cliente:
+    def __init__(self, nome, cpf):
+        self.nome = nome
+        self.cpf = cpf
+        self.contas = []
+
+    def criar_conta(self, tipo_conta, numero_conta, saldo_inicial=0, limite=1000):
+        if tipo_conta == 'normal':
+            conta = ContaNormal(numero_conta, self.nome, saldo_inicial)
+        elif tipo_conta == 'premium':
+            conta = ContaPremium(numero_conta, self.nome, saldo_inicial, limite)
+        self.contas.append(conta)
+        print(f'Conta {numero_conta} criada para o cliente {self.nome}.')
+        return conta
+
+# Definição da classe de agências
+class Agencia:
+    def __init__(self, codigo, nome):
+        self.codigo = codigo
+        self.nome = nome
+        self.clientes = []
+
+    def adicionar_cliente(self, cliente):
+        self.clientes.append(cliente)
+        print(f'Cliente {cliente.nome} adicionado à agência {self.nome}.')
+
+    def listar_clientes(self):
+        print(f"Agência {self.codigo} - {self.nome} tem os clientes:")
+        for cliente in self.clientes:
+            print(f"- {cliente.nome}")
+
+# Definição da classe do banco
+class Banco:
+    def __init__(self, nome):
+        self.nome = nome
+        self.agencias = []
+
+    def criar_agencia(self, codigo, nome):
+        agencia = Agencia(codigo, nome)
+        self.agencias.append(agencia)
+        print(f'Agência {nome} (código: {codigo}) criada.')
+        return agencia
+
+    def buscar_agencia(self, codigo):
+        for agencia in self.agencias:
+            if agencia.codigo == codigo:
+                return agencia
+        print(f"Agência com código {codigo} não encontrada.")
+        return None
+
+# Função do menu interativo
+def mostrar_menu():
+    print("\n=== MENU ===")
+    print("1 - Criar Cliente e Conta")
+    print("2 - Depositar")
+    print("3 - Sacar")
+    print("4 - Consultar Extrato")
+    print("5 - Consultar Clientes da Agência")
+    print("6 - Adicionar Novo Cliente")
+    print("7 - Criar Nova Conta")
+    print("8 - Criar Nova Agência")
+    print("9 - Sair")
+    print("Escolha uma opção:")
+
+# Função principal para o funcionamento do banco
+def main():
+    print("Bem-vindo ao Sistema Bancário!")
+    
+    # Criação inicial do banco
+    nome_banco = input("Digite o nome do banco: ")
+    banco = Banco(nome_banco)
+    print(f"Banco '{nome_banco}' criado com sucesso!")
+
+    # Criação inicial da agência
+    agencia_codigo = input("Digite o código da agência: ")
+    agencia_nome = input("Digite o nome da agência: ")
+    agencia = banco.criar_agencia(agencia_codigo, agencia_nome)
+
+    # Cadastro inicial do cliente
+    cliente_nome = input("Digite o nome do cliente: ")
+    cliente_cpf = input("Digite o CPF do cliente: ")
+    cliente = Cliente(cliente_nome, cliente_cpf)
+    agencia.adicionar_cliente(cliente)
+
+    # Criação inicial da conta
+    tipo_conta = input("Digite o tipo da conta ('normal' ou 'premium'): ")
+    numero_conta = input("Digite o número da conta: ")
+    saldo_inicial = float(input("Digite o saldo inicial da conta: "))
+    limite = 1000 if tipo_conta == 'premium' else 0
+    conta = cliente.criar_conta(tipo_conta, numero_conta, saldo_inicial, limite)
+
+    while True:
+        mostrar_menu()
+        opcao = input()
+
+        if opcao == '1':
+            # Criar novo cliente e conta
+            nome_cliente = input("Digite o nome do novo cliente: ")
+            cpf_cliente = input("Digite o CPF do novo cliente: ")
+            novo_cliente = Cliente(nome_cliente, cpf_cliente)
+            agencia.adicionar_cliente(novo_cliente)
+
+            tipo_conta = input("Tipo de conta (normal/premium): ").strip().lower()
+            numero_conta = input("Número da conta: ")
+            saldo_inicial = float(input("Saldo inicial: R$ "))
+            limite = 1000 if tipo_conta == 'premium' else 0
+            conta = novo_cliente.criar_conta(tipo_conta, numero_conta, saldo_inicial, limite)
+
+        elif opcao == '2':
+            if conta:
+                valor = float(input("Valor a depositar: R$ "))
+                conta.depositar(valor)
+            else:
+                print("Nenhuma conta criada ainda.")
+        
+        elif opcao == '3':
+            if conta:
+                valor = float(input("Valor a sacar: R$ "))
+                conta.sacar(valor)
+            else:
+                print("Nenhuma conta criada ainda.")
+        
+        elif opcao == '4':
+            if conta:
+                conta.exibir_historico()
+            else:
+                print("Nenhuma conta criada ainda.")
+        
+        elif opcao == '5':
+            agencia.listar_clientes()
+        
+        elif opcao == '6':
+            nome = input("Digite o nome do novo cliente: ")
+            cpf = input("Digite o CPF do novo cliente: ")
+            novo_cliente = Cliente(nome, cpf)
+            agencia.adicionar_cliente(novo_cliente)
+
+        elif opcao == '7':
+            tipo = input("Tipo de conta (normal/premium): ")
+            numero = input("Número da conta: ")
+            saldo = float(input("Saldo inicial: R$ "))
+            limite = 1000 if tipo == "premium" else 0
+            conta = cliente.criar_conta(tipo, numero, saldo, limite)
+
+        elif opcao == '8':
+            codigo = input("Digite o código da nova agência: ")
+            nome = input("Digite o nome da nova agência: ")
+            agencia = banco.criar_agencia(codigo, nome)
+
+        elif opcao == '9':
+            print("Saindo...")
+            break
+        
+        else:
+            print("Opção inválida. Tente novamente.")
+
+if __name__ == "__main__":
+    main()
