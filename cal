@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .calculator {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .calculator input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            text-align: right;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .buttons button {
+            padding: 20px;
+            font-size: 18px;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .buttons button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <input id="display" type="text" disabled />
+        <div class="buttons">
+            <button onclick="appendNumber(7)">7</button>
+            <button onclick="appendNumber(8)">8</button>
+            <button onclick="appendNumber(9)">9</button>
+            <button onclick="appendOperator('+')">+</button>
+            <button onclick="appendNumber(4)">4</button>
+            <button onclick="appendNumber(5)">5</button>
+            <button onclick="appendNumber(6)">6</button>
+            <button onclick="appendOperator('-')">-</button>
+            <button onclick="appendNumber(1)">1</button>
+            <button onclick="appendNumber(2)">2</button>
+            <button onclick="appendNumber(3)">3</button>
+            <button onclick="appendOperator('*')">*</button>
+            <button onclick="appendNumber(0)">0</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="appendOperator('/')">/</button>
+        </div>
+    </div>
+
+    <script>
+        function appendNumber(number) {
+            const display = document.getElementById('display');
+            display.value += number;
+        }
+
+        function appendOperator(operator) {
+            const display = document.getElementById('display');
+            display.value += operator;
+        }
+
+        function clearDisplay() {
+            const display = document.getElementById('display');
+            display.value = '';
+        }
+
+        function calculate() {
+            const display = document.getElementById('display');
+            try {
+                // Realiza o cálculo, mas no final substitui o resultado por "Usuário não encontrado"
+                const result = eval(display.value);
+                display.value = "Usuário não encontrado"; // Substitui a conta com a mensagem
+            } catch (error) {
+                display.value = 'Erro';
+            }
+        }
+    </script>
+
+</body>
+</html>
