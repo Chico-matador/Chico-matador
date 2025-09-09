@@ -1,17 +1,20 @@
 #include <iostream>
-#include <iomanip> // para usar notação científica se ficar muito grande
 using namespace std;
 
 int main() {
-    cout << "=== Fatorial de 1 até 100 ===" << endl;
+    int n;
+    unsigned long long fatorial = 1; // tipo inteiro bem grande
 
-    
-    long double fatorial = 1;
+    cout << "Digite um numero para calcular o fatorial: ";
+    cin >> n;
 
-    for (int i = 1; i <= 100; i++) {
-        fatorial *= i;
-
-        cout << setw(3) << i << "! = " << scientific << fatorial << endl;
+    if (n < 0) {
+        cout << "Nao existe fatorial de numero negativo!" << endl;
+    } else {
+        for (int i = 1; i <= n; i++) {
+            fatorial *= i;
+        }
+        cout << n << "! = " << fatorial << endl;
     }
 
     return 0;
