@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double a, b;
+
+    cout << "Digite o primeiro número: ";
+    cin >> a;
+
+    cout << "Digite o segundo número: ";
+    cin >> b;
+
+    cout << "Soma: " << a + b << endl;
+    cout << "Subtração: " << a - b << endl;
+    cout << "Multiplicação: " << a * b << endl;
+
+    if (b != 0)
+        cout << "Divisão: " << a / b << endl;
+    else
+        cout << "Divisão por zero não é permitida!" << endl;
+
+    return 0;
+}
