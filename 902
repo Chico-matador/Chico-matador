@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int escolha;
+    double numero;
+
+    cout << "=== Calculadora até 100 ===" << endl;
+    cout << "Escolha a operação:" << endl;
+    cout << "1 - Soma" << endl;
+    cout << "2 - Subtracao" << endl;
+    cout << "3 - Multiplicacao" << endl;
+    cout << "4 - Divisao" << endl;
+    cout << "Digite: ";
+    cin >> escolha;
+
+    cout << "Digite o numero base: ";
+    cin >> numero;
+
+    cout << "\nResultado dos calculos de " << numero << " com 1 até 100:\n" << endl;
+
+    for (int i = 1; i <= 100; i++) {
+        switch (escolha) {
+            case 1:
+                cout << numero << " + " << i << " = " << numero + i << endl;
+                break;
+            case 2:
+                cout << numero << " - " << i << " = " << numero - i << endl;
+                break;
+            case 3:
+                cout << numero << " * " << i << " = " << numero * i << endl;
+                break;
+            case 4:
+                if (i != 0)
+                    cout << numero << " / " << i << " = " << numero / i << endl;
+                break;
+            default:
+                cout << "Opcao invalida!" << endl;
+                return 0;
+        }
+    }
+
+    return 0;
+}
